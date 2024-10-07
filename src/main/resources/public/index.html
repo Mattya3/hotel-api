@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>java-web-jpa</title>
+    <style>
+        button {
+            margin-top: 10px
+        }
+
+        section {
+            border-radius: 10px;
+            box-shadow: 0 1px 4px #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
+        textarea {
+            width: 400px;
+        }
+
+        .request-status {
+            margin-left: 10px;
+            color: gray;
+        }
+
+        .request-status.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hotel API</h1>
+
+<section>
+    <h2>GET /hotels</h2>
+    <form id="get-hotels">
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>GET /hotels/{hotelId}</h2>
+    <form id="get-hotel-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="get-hotel-by-id_parameter">hotelId</label>
+            <input id="get-hotel-by-id_parameter" value="1" required>
+        </div>
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>POST /hotels</h2>
+    <form id="post-hotels">
+        <div>
+            <h3>Request body (JSON)</h3>
+            <textarea id="post-hotels_request-body" rows="4" required>
+{
+  "name": "New Tokyo Hotel",
+  "prefecture": "tokyo"
+}</textarea>
+        </div>
+        <div>
+            <button>Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>PUT /hotels/{hotelId}</h2>
+    <form id="put-hotel-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="put-hotel-by-id_parameter">hotelId</label>
+            <input id="put-hotel-by-id_parameter" value="2" required>
+        </div>
+        <div>
+            <h3>Request body (JSON)</h3>
+            <textarea id="put-hotel-by-id_request-body" rows="4" required>
+{
+  "name": "Business Hotel Royal Lake New Building",
+  "prefecture": "Tokyo"
+}</textarea>
+        </div>
+        <div>
+            <button>Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>DELETE /hotels/{hotelId}</h2>
+    <form id="delete-hotel-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="delete-hotel-by-id_parameter">roomId</label>
+            <input id="delete-hotel-by-id_parameter" value="6" required>
+        </div>
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>GET /hotels/{hotelId}/rooms</h2>
+    <form id="get-rooms">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="get-rooms-by-hotelid_parameter">hotelId</label>
+            <input id="get-rooms-by-hotelid_parameter" value="3" required>
+        </div>
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>GET /hotels/{hotelId}/rooms/{roomId}</h2>
+    <form id="get-room-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="get-room-by-hotelid_parameter">hotelId</label>
+            <input id="get-room-by-hotelid_parameter" value="3" required>
+            <br>
+            <label for="get-room-by-id_parameter">roomId</label>
+            <input id="get-room-by-id_parameter" value="14" required>
+        </div>
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>POST /hotels/{hotelId}/rooms</h2>
+    <form id="post-rooms">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="post-rooms-by-hotelid_parameter">hotelId</label>
+            <input id="post-rooms-by-hotelid_parameter" value="1" required>
+            <h3>Request body (JSON)</h3>
+            <textarea id="post-rooms_request-body" rows="4" required>{
+  "name": "Single Non-smoking Room"
+}</textarea>
+        </div>
+        <div>
+            <button>Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>PUT /hotels/{hotelId}/rooms/{roomId}</h2>
+    <form id="put-room-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="put-room-by-hotelid_parameter">hotelId</label>
+            <input id="put-room-by-hotelid_parameter" value="5" required>
+            <br>
+            <label for="put-room-by-id_parameter">roomId</label>
+            <input id="put-room-by-id_parameter" value="21" required>
+        </div>
+        <div>
+            <h3>Request body (JSON)</h3>
+            <textarea id="put-room-by-id_request-body" rows="4" required>{
+  "name": "Semi-Double Large Room"
+}</textarea>
+        </div>
+        <div>
+            <button>Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+    <h2>DELETE /hotels/{hotelId}/rooms/{roomId}</h2>
+    <form id="delete-room-by-id">
+        <div>
+            <h3>Path parameter</h3>
+            <label for="delete-room-by-hotelid_parameter">hotelId</label>
+            <input id="delete-room-by-hotelid_parameter" value="3" required>
+            <br>
+            <label for="delete-room-by-id_parameter">roomId</label>
+            <input id="delete-room-by-id_parameter" value="18" required>
+        </div>
+        <div>
+            <button type="submit">Request</button>
+            <output class="request-status"></output>
+        </div>
+        <div>
+            <h3>Responses</h3>
+            <div>
+                <label>Status code: </label>
+                <span class="response-status"></span>
+            </div>
+            <div>
+                <label>Response body: </label>
+                <pre class="response-body"></pre>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    const $ = (query) => document.querySelector(query);
+
+    const getHotelsForm = $('#get-hotels');
+    getHotelsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let url = '/hotels';
+        request(getHotelsForm, url)
+            .catch((err) => console.error(err))
+    });
+
+    const getHotelByIdForm = $('#get-hotel-by-id');
+    getHotelByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#get-hotel-by-id_parameter').value.trim();
+        const url = `/hotels/${hotelId}`;
+        request(getHotelByIdForm, url)
+            .catch((err) => console.error(err))
+    });
+
+    const postHotelsForm = $('#post-hotels');
+    postHotelsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const body = $('#post-hotels_request-body').value.trim();
+        request(postHotelsForm, '/hotels', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        });
+    });
+
+    const putHotelByIdForm = $('#put-hotel-by-id');
+    putHotelByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const body = $('#put-hotel-by-id_request-body').value.trim();
+        const hotelId = $('#put-hotel-by-id_parameter').value.trim();
+        const url = `/hotels/${hotelId}`;
+        request(putHotelByIdForm, url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        });
+    });
+
+    const deleteHotelByIdForm = $('#delete-hotel-by-id');
+    deleteHotelByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#delete-hotel-by-id_parameter').value.trim();
+        const url = `/hotels/${hotelId}`;
+        request(deleteHotelByIdForm, url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    });
+
+    const getRoomsForm = $('#get-rooms');
+    getRoomsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#get-rooms-by-hotelid_parameter').value.trim();
+        const url = `/hotels/${hotelId}/rooms`;
+        request(getRoomsForm, url).catch((err) => console.error(err));
+    });
+
+    const getRoomByIdForm = $('#get-room-by-id');
+    getRoomByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#get-room-by-hotelid_parameter').value.trim();
+        const roomId = $('#get-room-by-id_parameter').value.trim();
+        const url = `/hotels/${hotelId}/rooms/${roomId}`;
+        request(getRoomByIdForm, url).catch((err) => console.error(err));
+    });
+
+    const postRoomsForm = $('#post-rooms');
+    postRoomsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#post-rooms-by-hotelid_parameter').value.trim();
+        const body = $('#post-rooms_request-body').value.trim();
+        const url = `/hotels/${hotelId}/rooms`;
+        request(postRoomsForm, url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        });
+    });
+
+    const putRoomByIdForm = $('#put-room-by-id');
+    putRoomByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#put-room-by-hotelid_parameter').value.trim();
+        const roomId = $('#put-room-by-id_parameter').value.trim();
+        const body = $('#put-room-by-id_request-body').value.trim();
+        const url = `/hotels/${hotelId}/rooms/${roomId}`;
+        request(putRoomByIdForm, url, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: body,
+        });
+    });
+
+    const deleteRoomByIdForm = $('#delete-room-by-id');
+    deleteRoomByIdForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const hotelId = $('#delete-room-by-hotelid_parameter').value.trim();
+        const roomId = $('#delete-room-by-id_parameter').value.trim();
+        const url = `/hotels/${hotelId}/rooms/${roomId}`;
+        request(deleteRoomByIdForm, url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    });
+
+    async function request(formElement, url, options) {
+        const requestStatus = formElement.querySelector('.request-status');
+        const responseStatus = formElement.querySelector('.response-status');
+        const responseBody = formElement.querySelector('.response-body');
+
+        requestStatus.textContent = 'Requesting...';
+        requestStatus.classList.remove('error');
+        responseStatus.textContent = '';
+        responseBody.textContent = '';
+
+        let res;
+        try {
+            res = await fetch(url, options);
+        } catch (e) {
+            console.error(e);
+            requestStatus.textContent = e.message;
+            requestStatus.classList.add('error');
+            return;
+        }
+        requestStatus.textContent = 'Finished';
+
+        const body = await res.text();
+        responseStatus.textContent = res.status;
+        try {
+            const json = JSON.parse(body);
+            responseBody.textContent = JSON.stringify(json, null, 2);
+        } catch (e) {
+            responseBody.textContent = body;
+        }
+    }
+</script>
+
+</body>
+</html>

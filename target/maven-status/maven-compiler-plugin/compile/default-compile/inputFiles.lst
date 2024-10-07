@@ -1,0 +1,14 @@
+/root/src/src/main/java/com/track/hotelapi/models/Room.java
+/root/src/src/main/java/com/track/hotelapi/models/Hotel.java
+/root/src/src/main/java/com/track/hotelapi/repositories/records/HotelRecord.java
+/root/src/src/main/java/com/track/hotelapi/repositories/HotelRepository.java
+/root/src/src/main/java/com/track/hotelapi/repositories/records/RoomRecord.java
+/root/src/src/main/java/com/track/hotelapi/exceptions/HotelIdException.java
+/root/src/src/main/java/com/track/hotelapi/HotelApiApplication.java
+/root/src/src/main/java/com/track/hotelapi/inputs/RoomInput.java
+/root/src/src/main/java/com/track/hotelapi/exceptions/RoomIdException.java
+/root/src/src/main/java/com/track/hotelapi/services/HotelService.java
+/root/src/src/main/java/com/track/hotelapi/controllers/HotelMVCController.java
+/root/src/src/main/java/com/track/hotelapi/handler/HotelHandler/HotelHandler.java
+/root/src/src/main/java/com/track/hotelapi/inputs/HotelInput.java
+/root/src/src/main/java/com/track/hotelapi/controllers/HotelController.java

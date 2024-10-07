@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS room;
+DROP TABLE IF EXISTS hotel;
+
+CREATE TABLE hotel (
+    id INTEGER NOT NULL PRIMARY KEY, 
+    name VARCHAR,
+    prefecture VARCHAR
+);
+
+CREATE TABLE room (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name VARCHAR,
+    hotel_id INTEGER
+);
